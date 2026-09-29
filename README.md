@@ -6,7 +6,7 @@ DESCRIÇÃO DO PROJETO:
 
 A Vinheria Agnello nos contratou para criar um sistema de monitoramento à base do ATmega328P, capaz de acompanhar as condições de luminosidade do estoque, pois a qualidade do vinho é diretamente afetada pela luminosidade do ambiente.
 
-O sistema sinaliza o estado do ambiente (Normal 🟢 / Alerta 🟡 / Anormal 🔴) através de LEDs, um display LCD e um buzzer sonoro.
+O sistema sinaliza o estado do ambiente (Normal 🟢 / Anormal 🟡 / Perigo! 🔴) através de LEDs, um display LCD e um buzzer sonoro.
 
 
 
@@ -14,7 +14,7 @@ DEPENDÊNCIAS:
 
 Software: Arduino IDE — necessária para compilar e gravar o código no ATmega328P.
 
-Bibliotecas: LiquidCrystal.h — usada para controlar o display LCD 16x2 que mostra o status da luminosidade. Já vem por padrão na Arduino IDE.
+Bibliotecas: LiquidCrystal_I2C.h — usada para controlar o display LCD 16x2(I2C) que mostra o status da luminosidade. Já vem por padrão na Arduino IDE.
 
 
 
@@ -27,9 +27,9 @@ Só que esse sinal é analógico (varia de forma contínua), e o microcontrolado
 
 A partir dessa porcentagem, o sistema decide o que mostrar e como reagir:
 
-Luminosidade normal (< 90%): acende o LED verde e o LCD mostra "Luminosidade Normal".
-Nível de alerta (90% a 92%): acende o LED amarelo, o LCD mostra "Alerta na Luminosidade" e o buzzer apita por 3 segundos.
-Nível anormal (>= 93%): acende o LED vermelho, o LCD mostra "Luminosidade Anormal" e o buzzer fica tocando como uma sirene enquanto o problema continuar.
+Luminosidade normal (< 78%): acende o LED verde e o LCD mostra "Luminosidade Normal".
+Nível de alerta (78% a 89%): acende o LED amarelo, o LCD mostra "Anormal" e o buzzer apita por 3 segundos.
+Nível anormal (>= 90%): acende o LED vermelho, o LCD mostra "Perigo!" e o buzzer fica tocando como uma sirene enquanto o problema continuar.
 
 
 
